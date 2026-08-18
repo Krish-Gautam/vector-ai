@@ -1,561 +1,140 @@
+<div align="center">
+
 # Vector
 
-<p align="center">
-  <strong>Turn ambitious goals into structured, actionable roadmaps.</strong>
-</p>
+**Turn ambitious goals into structured, daily-executable roadmaps.**
 
-<p align="center">
-  Vector is an AI-powered goal planning and execution platform that transforms a user's goal, skill level, available time, and target duration into a personalized roadmap with structured phases, daily tasks, and progress tracking.
-</p>
+<img src="https://img.shields.io/badge/Status-Live-success" alt="Status" />
+<img src="https://img.shields.io/badge/Access-Free-blue" alt="Free" />
+<img src="https://img.shields.io/badge/AI-Powered-412991?logo=openai&logoColor=white" alt="AI Powered" />
 
-<p align="center">
-  <a href="https://vectorai.me">Live Demo</a>
-  &nbsp;•&nbsp;
-  <a href="#features">Features</a>
-  &nbsp;•&nbsp;
-  <a href="#architecture">Architecture</a>
-  &nbsp;•&nbsp;
-  <a href="#engineering-challenges">Engineering</a>
-</p>
+<p><i>Most goal-planning tools tell you <b>what</b> to learn. Vector tells you what to do today — and whether you're actually on pace.</i></p>
+
+<h3><a href="https://vectorai.me">Build Your Roadmap at vectorai.me →</a></h3>
+
+<br>
+<img src="./vector_landingPage.png" alt="Vector landing page" width="800">
+</div>
 
 ---
 
-## Product Preview
+## The Problem: Knowing the Goal Isn't the Hard Part
 
-### Landing Page
+"Become a full-stack developer." "Crack DSA." "Get placement-ready in 6 months."
 
-![Vector Landing Page](./assets/screenshots/landing-page.png)
+Everyone can *name* the goal. What breaks people is the next question: **what do I actually do today, tomorrow, and the day after — given the two hours I actually have, not the ten I wish I had?**
 
-Vector is designed around a simple idea: **a goal is only useful when it can be converted into consistent execution.**
+Most tools stop at a static list of topics and leave you to turn that into a schedule yourself. Vector was built to close that gap: it takes your goal, your current level, and your real available time, and turns it into an execution system —
 
-### Personalized Roadmap
-
-![Generated Roadmap](./assets/screenshots/generated-roadmap.png)
-
-Users provide their goal, current level, target duration, and available daily time. Vector converts these constraints into a structured roadmap with phases and actionable tasks.
-
-### Progress Dashboard
-
-![Vector Dashboard](./assets/screenshots/progress-dashboard.png)
-
-The dashboard turns roadmap activity into an execution view, helping users understand what they have completed, what remains, and how consistently they are progressing.
-
-> More product screenshots are available throughout this README.
-
----
-
-## Why Vector?
-
-Most learning and productivity tools stop at **what** someone should learn.
-
-They provide a list of topics, courses, or resources, but rarely answer:
-
-* What should I do first?
-* How much should I study each day?
-* How should the plan fit my current skill level?
-* What should I work on today?
-* Am I actually making progress?
-
-Vector was built to bridge that gap.
-
-Instead of giving users another static checklist, Vector attempts to turn a vague objective into an **execution system**:
-
-**Goal → Personalized Roadmap → Phases → Tasks → Daily Execution → Progress**
-
----
-
-## How It Works
-
-```mermaid
-flowchart LR
-    A[User Goal] --> B[User Context]
-    B --> C[AI Roadmap Generation]
-    C --> D[Structured Roadmap]
-    D --> E[Phases & Tasks]
-    E --> F[Daily Execution]
-    F --> G[Progress Tracking]
+```
+Goal  →  Personalized Roadmap  →  Phases  →  Daily Tasks  →  Progress
 ```
 
-### 1. Define a goal
+— not a reading list you'll abandon in a week.
 
-The user provides a goal such as:
-
-> "Become a full-stack developer"
-
-along with their current level, available study time, and target duration.
-
-### 2. Generate a roadmap
-
-Vector processes the user's inputs and generates a structured plan designed around their constraints.
-
-### 3. Break the roadmap into phases
-
-The generated plan is organized into logical phases instead of presenting users with one large list of topics.
-
-### 4. Convert phases into actionable tasks
-
-The roadmap is translated into smaller tasks that can be scheduled and completed.
-
-### 5. Execute and track
-
-Users work through their daily tasks while Vector tracks progress and execution activity.
+<p align="center">
+  <img src="./Generated_roadmap.png" alt="Generated roadmap view" width="800">
+</p>
 
 ---
 
-# Features
+## Step 1: Generation That Actually Fits *You*
 
-## AI-Powered Roadmap Generation
+Two people with the identical goal of "learn DSA" but different starting points shouldn't get the same plan. Vector's generation engine takes your **goal, current skill level, and available daily time** and produces a roadmap sized to fit — not a generic template with your name on it.
 
-Vector uses LLM-based generation to transform high-level goals into structured learning or execution plans.
-
-The generation pipeline considers factors such as:
-
-* Goal
-* Current skill level
-* Available daily time
-* Target duration
-* Roadmap structure
-
-The generated output is then validated before being persisted.
-
----
-
-## Personalized Learning Paths
-
-Two users with the same goal may have completely different starting points and available time.
-
-Vector therefore uses user-specific constraints when constructing the roadmap rather than treating every user as starting from the same point.
-
----
-
-## Structured Roadmaps
-
-Instead of a flat checklist, each roadmap is organized into:
+Every generated roadmap is broken into logical **phases**, and every phase into concrete tasks, so you're never staring at one overwhelming wall of topics:
 
 ```text
 Roadmap
- ├── Phase 1
- │    ├── Task 1
- │    ├── Task 2
- │    └── Task 3
- │
- ├── Phase 2
- │    ├── Task 4
- │    └── Task 5
- │
- └── Phase 3
-      └── ...
+ ├── Phase 1 → Task 1, Task 2, Task 3
+ ├── Phase 2 → Task 4, Task 5
+ └── Phase 3 → ...
 ```
 
-This gives users a clear progression from their current state toward their target.
+---
+
+## Step 2: From Plan to Daily Execution
+
+A roadmap you never open again is worthless. Vector converts the plan into **daily tasks**, sized to your available time, and tracks how consistently you're actually showing up — turning "I have a plan" into "I know exactly what to do in the next hour."
+
+Scheduling is **timezone-aware**: your "today" is computed from *your* clock, not the server's, so the plan never drifts out of sync with your actual day.
+
+<p align="center">
+  <img src="./Roadmap_Dashboard.png" alt="Progress dashboard" width="800">
+  <br><em>Execution view — completion, pace, and consistency at a glance</em>
+</p>
 
 ---
 
-## Daily Task Planning
+## step 3: Accountability, Built In
 
-Vector converts the roadmap into actionable daily work based on the user's available study time.
+Solo goals die quietly. **Execution Circles** match you with other people working toward similar goals, so pace and consistency stop being a private struggle and become something you're actually accountable for.
 
-This is an important distinction between simply **generating a roadmap** and actually helping a user **execute it**.
-
-![Daily Tasks](./assets/screenshots/daily-tasks.png)
-
----
-
-## Progress Tracking
-
-Users can track roadmap completion and task execution through the dashboard.
-
-![Progress Dashboard](./assets/screenshots/progress-dashboard.png)
-
-The system aggregates task and roadmap data to provide a higher-level view of execution.
+<p align="center">
+  <img src="./ExecutionCircle.png" alt="Execution Circle accountability view" width="800">
+  <br><em>Execution Circles — shared accountability for shared goals</em>
+</p>
 
 ---
 
-## Execution Circles
+## Under the Hood: What Makes It Not Fall Over
 
-Vector also includes an accountability layer through **Execution Circles**.
+This is the part most goal-tracker READMEs skip, and it's where most of the actual engineering time went. Treating AI output as trustworthy application data is a good way to ship a broken product.
 
-Users can be matched with other users working toward similar goals, creating a shared environment for accountability and progress.
+**🧪 LLM output is guilty until proven innocent.** Every generated roadmap is schema-validated and checked against your available time *before* it's allowed to touch the database. If it's not realistic, it doesn't get persisted.
 
-![Execution Circle](./assets/screenshots/execution-circle.png)
+**🔒 Generation is locked, not racy.** Re-triggering generation mid-request could otherwise create duplicate or conflicting roadmap state — a generation lock stops concurrent attempts from stepping on each other.
 
----
+**🧩 Multi-stage failures don't leave orphaned data.** Generation runs through goal processing → AI call → validation → persistence → task planning → dashboard state. If it fails halfway, the backend tracks status and cleans up instead of leaving half-built roadmaps behind.
 
-## Timezone-Aware Scheduling
-
-Daily task planning takes the user's timezone into account instead of relying solely on the server's date.
-
-This prevents a user's daily schedule from becoming inconsistent when the application server and user are operating in different timezones.
+**🔐 Auth doesn't stop at the browser.** Frontend and backend are separate services — every protected API route independently verifies the session token server-side before touching user data.
 
 ---
 
-# AI Roadmap Generation Pipeline
-
-The roadmap generator is one of the most technically important parts of Vector.
-
-```mermaid
-flowchart TD
-    A[User Input] --> B[Goal Processing]
-    B --> C[Goal Classification]
-    C --> D{Reusable Roadmap Available?}
-
-    D -->|Yes| E[Template-Based Roadmap]
-    D -->|No| F[LLM Generation]
-
-    F --> G[Structured Output]
-    E --> G
-
-    G --> H[Schema Validation]
-    H --> I[Workload Validation]
-    I --> J[Persist Roadmap]
-    J --> K[Create Phases]
-    K --> L[Create Tasks]
-    L --> M[Generate Daily Plan]
-```
-
-### Generation flow
-
-**1. Collect user constraints**
-
-The system collects the goal, current level, duration, and available daily time.
-
-**2. Process the goal**
-
-The goal is refined and classified to help determine an appropriate generation path.
-
-**3. Reuse existing roadmap structures when possible**
-
-Where supported, Vector can use existing roadmap structures rather than generating everything from scratch.
-
-**4. Generate with an LLM**
-
-When a suitable structure is unavailable, the backend generates a structured roadmap using an LLM.
-
-**5. Validate the output**
-
-The generated data is validated before being stored.
-
-This is important because LLM output cannot simply be treated as trusted application data.
-
-**6. Validate workload**
-
-The system checks whether the generated roadmap provides a reasonable amount of work relative to the user's available time.
-
-**7. Persist the roadmap**
-
-Once validated, the roadmap, phases, and tasks are stored and the user's execution plan can be initialized.
-
----
-
-# Architecture
+## Architecture
 
 ```mermaid
 flowchart TD
     U[User] --> FE[Next.js Web App]
-
-    FE --> AUTH[Authentication]
     FE --> API[Express API]
-
     API --> SERVICES[Application Services]
-
-    SERVICES --> DB[(MongoDB Atlas)]
+    SERVICES --> DB[(Supabase)]
     SERVICES --> AI[LLM Providers]
-
     SERVICES --> ROADMAP[Roadmap Engine]
     SERVICES --> DAILY[Daily Task Planner]
-    SERVICES --> DASH[Dashboard]
     SERVICES --> CIRCLE[Execution Circles]
 ```
 
-## Frontend
-
-Built with:
-
-* Next.js
-* React
-* TypeScript
-* Tailwind CSS
-
-The frontend handles the user-facing experience including onboarding, roadmap visualization, dashboard views, daily tasks, authentication, and Execution Circles.
-
-## Backend
-
-The backend is built around a Node.js/Express API and separates product functionality into application modules such as:
-
-* Roadmap generation
-* AI processing
-* Daily task planning
-* Dashboard aggregation
-* Profile management
-* Execution Circles
-
-## Database
-
-The production application uses MongoDB Atlas for persistent application data.
-
-The data model represents concepts such as:
-
-* Users
-* Goals
-* Roadmaps
-* Roadmap phases
-* Tasks
-* Daily tasks
-* Execution Circles
-* User activity
-
-## Authentication
-
-Authentication is handled through Supabase Auth, while protected API requests are validated on the server before accessing user-specific resources.
-
-## AI Layer
-
-Vector integrates LLM providers for goal processing and roadmap generation.
-
-The AI layer is separated from the rest of the application so that generation logic can evolve independently from the UI.
+| Layer | Technology |
+|---|---|
+| Frontend | Next.js, React, TypeScript, Tailwind CSS |
+| Backend | Node.js, Express |
+| Database & Auth | Supabase |
+| AI | OpenAI / Groq |
+| Deployment | Vercel (frontend) · Render (backend) |
 
 ---
 
-# Engineering Challenges
+## What's Next
 
-Vector was not simply a UI project. A significant part of the work involved handling the problems that appear when AI-generated data is used inside a real application.
-
-## 1. Unreliable LLM Output
-
-### Problem
-
-LLMs can return incomplete, malformed, or poorly scoped roadmap data.
-
-### Approach
-
-Vector validates generated output before allowing it to become application state and performs workload checks against the user's available study time.
-
-### Why it matters
-
-The application treats AI as a **component of the system**, not as a source of unquestioned truth.
+- Adaptive roadmaps that adjust based on actual performance, not just the initial plan
+- Recovery planning when you fall behind pace
+- Roadmap template reuse to cut redundant AI generation
+- Deeper execution analytics
+- Smarter Execution Circle matching
 
 ---
 
-## 2. Preventing Duplicate Roadmap Generation
+<div align="center">
 
-### Problem
+### [Stop planning. Start executing — vectorai.me](https://vectorai.me)
 
-Users can potentially trigger generation multiple times while a previous generation is still running.
+> The source is maintained in a private repository. This public repo exists as a product and engineering showcase.
 
-That can lead to duplicate or inconsistent roadmap state.
+<br>
 
-### Approach
+**Krish Gautam** · B.Tech, NIT Kurukshetra
 
-Vector uses a generation lock around the roadmap creation process so that concurrent generation attempts can be controlled.
+[LinkedIn](https://www.linkedin.com/in/krish-gautam-4662b7334/) · [GitHub](https://github.com/Krish-Gautam/)
 
----
-
-## 3. Timezone-Aware Scheduling
-
-### Problem
-
-Using server-local dates for daily tasks can produce incorrect schedules for users in different timezones.
-
-### Approach
-
-Task scheduling uses the user's timezone when determining daily execution dates.
-
----
-
-## 4. Authentication Across Frontend and Backend
-
-### Problem
-
-The frontend and backend are separate services, so authentication cannot stop at the browser.
-
-### Approach
-
-The frontend obtains the authenticated session while protected API routes validate the user's bearer token on the server.
-
-This keeps user-specific roadmap and dashboard operations behind authenticated API boundaries.
-
----
-
-## 5. Coordinating AI Generation With Application State
-
-Roadmap generation involves multiple stages:
-
-```text
-Request
-  ↓
-Goal Processing
-  ↓
-AI Generation
-  ↓
-Validation
-  ↓
-Database Persistence
-  ↓
-Task Planning
-  ↓
-Dashboard State
-```
-
-Failure at any stage can leave partially created data.
-
-The backend therefore includes status tracking, cleanup/error handling, and generation-state management to keep the application consistent.
-
----
-
-# Tech Stack
-
-| Layer               | Technology                 |
-| ------------------- | -------------------------- |
-| Frontend            | Next.js, React, TypeScript |
-| Styling             | Tailwind CSS               |
-| Backend             | Node.js, Express           |
-| Database            | MongoDB Atlas              |
-| Authentication      | Supabase Auth              |
-| AI                  | OpenAI / Groq              |
-| Frontend Deployment | Vercel                     |
-| Backend Deployment  | Render                     |
-
----
-
-# Project Structure
-
-```text
-vector/
-├── apps/
-│   ├── web/
-│   │   ├── app/
-│   │   ├── components/
-│   │   ├── lib/
-│   │   └── types/
-│   │
-│   └── api/
-│       └── src/
-│           ├── modules/
-│           │   ├── ai/
-│           │   ├── auth/
-│           │   ├── dashboard/
-│           │   ├── dailytask/
-│           │   ├── executioncircle/
-│           │   ├── profile/
-│           │   └── roadmap/
-│           │
-│           └── data/
-│
-├── package.json
-├── pnpm-workspace.yaml
-└── README.md
-```
-
-The exact structure may evolve as the project grows; the important separation is between the user-facing web application and backend application services.
-
----
-
-# Deployment
-
-Vector is deployed as a production web application.
-
-```text
-                    ┌─────────────────┐
-                    │   User Browser  │
-                    └────────┬────────┘
-                             │
-                             ▼
-                    ┌─────────────────┐
-                    │     Vercel      │
-                    │   Next.js App   │
-                    └────────┬────────┘
-                             │
-                             ▼
-                    ┌─────────────────┐
-                    │  Express API    │
-                    │     Render      │
-                    └──────┬─────┬────┘
-                           │     │
-                ┌──────────┘     └──────────┐
-                ▼                           ▼
-        ┌──────────────┐             ┌─────────────┐
-        │ MongoDB Atlas│             │ AI Providers│
-        └──────────────┘             └─────────────┘
-```
-
-### Live Application
-
-**[Visit Vector →](https://vectorai.me)**
-
----
-
-# Screenshots
-
-Additional screenshots can be added to:
-
-```text
-assets/
-└── screenshots/
-    ├── landing-page.png
-    ├── onboarding.png
-    ├── generated-roadmap.png
-    ├── daily-tasks.png
-    ├── progress-dashboard.png
-    └── execution-circle.png
-```
-
-Recommended screenshots:
-
-| Screenshot        | What it should demonstrate         |
-| ----------------- | ---------------------------------- |
-| Landing Page      | Product positioning and UI quality |
-| Onboarding        | User inputs and personalization    |
-| Generated Roadmap | Core AI output                     |
-| Daily Tasks       | Turning roadmap into execution     |
-| Dashboard         | Progress and tracking              |
-| Execution Circle  | Accountability/community feature   |
-
-The **generated roadmap** and **dashboard** should be your strongest screenshots because they communicate the actual product value better than the landing page alone.
-
----
-
-# Future Improvements
-
-Potential directions for Vector include:
-
-* More adaptive roadmap generation based on actual user performance
-* Better recovery planning when users fall behind
-* Improved roadmap retrieval and reuse
-* Deeper execution analytics
-* More sophisticated Execution Circle matching
-* Richer accountability and social features
-* Stronger admin and moderation tooling
-
----
-
-# Why I Built Vector
-
-I built Vector around a simple problem:
-
-**Knowing what you want to achieve is easy. Knowing what to do every day to get there is much harder.**
-
-The goal was to build more than an AI chatbot that generates a list of topics.
-
-Vector combines AI-generated planning with structured tasks, scheduling, progress tracking, and accountability to create a system that helps users move from **intention to execution**.
-
-The project also gave me an opportunity to work through practical engineering problems involving AI reliability, backend architecture, authentication, scheduling, data consistency, and production deployment.
-
----
-
-# Author
-
-**Krish Gautam**
-
-B.Tech — NIT Kurukshetra
-
-* LinkedIn: `YOUR_LINKEDIN_URL`
-* GitHub: `YOUR_GITHUB_URL`
-* Portfolio: `YOUR_PORTFOLIO_URL`
-
----
-
-## Live Demo
-
-**[vectorai.me](https://vectorai.me)**
-
-> The source code is maintained in a private repository. This public repository is intended as a product and engineering showcase containing the project's documentation, architecture, screenshots, and technical overview.
+</div>
